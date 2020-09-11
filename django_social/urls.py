@@ -23,5 +23,7 @@ urlpatterns = [
     path("thanks/", views.ThanksPage.as_view(), name="thanks"),
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
+    path("posts/", include("posts.urls")),
+    path("groups/", include("groups.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
 ]

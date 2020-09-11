@@ -10,7 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+from dotenv import load_dotenv
+
 from pathlib import Path
+from os import environ
+
+# Load dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +26,10 @@ TEMPLATE_DIR = Path.joinpath(BASE_DIR, "templates")
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "s$3us-v%0qg#f(ttj-w1wowa=q3^7hf+y%*ximncqfr=%)2_u4"
+SECRET_KEY = environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = environ.get("SOCIAL_DEBUG") == "true"
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "bootstrap3",
     "accounts",
+    "groups",
+    "posts",
 ]
 
 MIDDLEWARE = [
